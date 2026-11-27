@@ -1,0 +1,163 @@
+@import "tailwindcss";
+
+/* ── Tailwind text-size overrides: mínimo 1rem (16px) ── */
+@theme {
+  --text-xs: 1rem;
+  --text-sm: 1rem;
+}
+
+/* ── Tokens semánticos expuestos como clases (bg-superficie, text-texto, border-borde…) ── */
+@theme inline {
+  --color-fondo: var(--t-fondo);
+  --color-superficie: var(--t-superficie);
+  --color-superficie-alt: var(--t-superficie-alt);
+  --color-realce: var(--t-realce);
+  --color-borde: var(--t-borde);
+  --color-borde-fuerte: var(--t-borde-fuerte);
+  --color-texto: var(--t-texto);
+  --color-texto-sec: var(--t-texto-sec);
+  --color-acento: var(--t-acento);
+  --color-acento-hover: var(--t-acento-hover);
+  --color-acento-fg: var(--t-acento-fg);
+  --color-acento-texto: var(--t-acento-texto);
+  --color-exito: var(--t-exito);
+  --color-exito-solido: var(--t-exito-solido);
+  --color-exito-solido-hover: var(--t-exito-solido-hover);
+  --color-error: var(--t-error);
+  --color-error-solido: var(--t-error-solido);
+  --color-error-solido-hover: var(--t-error-solido-hover);
+  --color-info: var(--t-info);
+  --color-info-solido: var(--t-info-solido);
+  --color-info-solido-hover: var(--t-info-solido-hover);
+  --color-sobre-solido: var(--t-sobre-solido);
+}
+
+@layer base {
+  /* Tema claro (por defecto) */
+  :root {
+    --font-sans: 'Atkinson Hyperlegible', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    --t-fondo: #eef2f7;
+    --t-superficie: #ffffff;
+    --t-superficie-alt: #f1f5f9;
+    --t-realce: #e2e8f0;
+    --t-borde: #cbd5e1;
+    --t-borde-fuerte: #64748b;
+    --t-texto: #0f172a;
+    --t-texto-sec: #475569;
+    --t-acento: #b45309;
+    --t-acento-hover: #92400e;
+    --t-acento-fg: #ffffff;
+    --t-acento-texto: #92400e;
+    --t-exito: #065f46;
+    --t-exito-solido: #047857;
+    --t-exito-solido-hover: #065f46;
+    --t-error: #b91c1c;
+    --t-error-solido: #b91c1c;
+    --t-error-solido-hover: #991b1b;
+    --t-info: #3730a3;
+    --t-info-solido: #4338ca;
+    --t-info-solido-hover: #3730a3;
+    --t-sobre-solido: #ffffff;
+    --t-scroll-track: #e2e8f0;
+    --t-scroll-thumb: #94a3b8;
+
+    color-scheme: light;
+  }
+
+  /* Tema oscuro (opcional; "Automático" lo resuelve en JS según el sistema) */
+  :root[data-theme="dark"] {
+    --t-fondo: #020617;
+    --t-superficie: #0f172a;
+    --t-superficie-alt: #1e293b;
+    --t-realce: #334155;
+    --t-borde: #334155;
+    --t-borde-fuerte: #8391a7;
+    --t-texto: #f8fafc;
+    --t-texto-sec: #cbd5e1;
+    --t-acento: #f59e0b;
+    --t-acento-hover: #fbbf24;
+    --t-acento-fg: #0f172a;
+    --t-acento-texto: #fcd34d;
+    --t-exito: #6ee7b7;
+    --t-exito-solido: #047857;
+    --t-exito-solido-hover: #065f46;
+    --t-error: #fca5a5;
+    --t-error-solido: #b91c1c;
+    --t-error-solido-hover: #991b1b;
+    --t-info: #c7d2fe;
+    --t-info-solido: #4338ca;
+    --t-info-solido-hover: #3730a3;
+    --t-sobre-solido: #ffffff;
+    --t-scroll-track: #0f172a;
+    --t-scroll-thumb: #475569;
+
+    color-scheme: dark;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.55;
+    margin: 0;
+    padding: 0;
+    background-color: var(--t-fondo);
+    color: var(--t-texto);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::placeholder {
+    color: var(--t-texto-sec);
+    opacity: 1;
+  }
+
+  ::selection {
+    background-color: var(--t-acento);
+    color: var(--t-acento-fg);
+  }
+
+  /* Mínimo de tamaño tocable (WCAG 2.5.5) */
+  button,
+  [role="button"],
+  a[href],
+  input:not([type="hidden"]),
+  select,
+  textarea {
+    min-height: 3rem;
+  }
+
+  /* Visible focus ring for keyboard navigation */
+  :focus-visible {
+    outline: 3px solid var(--t-acento);
+    outline-offset: 2px;
+  }
+  /* Al llegar con Tab, deja lugar para que el contorno no quede cortado por el borde del contenedor */
+  button, a[href], input, select, textarea, summary, [tabindex] {
+    scroll-margin: 0.75rem;
+  }
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--t-scroll-track);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--t-scroll-thumb);
+    border-radius: 9999px;
+  }
+}

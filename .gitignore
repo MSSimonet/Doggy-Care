@@ -1,0 +1,65 @@
+# Dependencies
+node_modules/
+
+# Production build
+dist/
+dist-ssr/
+
+# Environment (sólo se versiona el ejemplo sin valores)
+.env*
+!.env.example
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Scratch & local tools
+scratch/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Private data files (never commit)
+pensionados.*
+*.rar
+graphify-out/
+
+# Android / Capacitor local build files
+android/app/build/
+android/.gradle/
+android/build/
+android/captures/
+
+# Respaldos descargados desde Ajustes (tienen datos reales)
+doggy-care-respaldo-*.json
+*.respaldo.json
+
+# Excel con datos reales de clientes: nunca al repo
+*.xlsx
+*.xls
+
+# Inventario de limpieza (local, no se publica)
+docs/inventario-limpieza.md
+
+# Salida de scripts/medir.mjs (se regenera)
+docs/capturas/
+
+# Builds y firmas de Android
+*.apk
+*.aab
+*.keystore
+*.jks
+local.properties
+android/**/build/
+android/app/src/main/assets/public/
+android/app/src/main/assets/capacitor.config.json
+android/app/src/main/assets/capacitor.plugins.json
+
+# Archivos del sistema
+desktop.ini
+!.env.demo
